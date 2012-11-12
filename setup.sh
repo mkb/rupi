@@ -4,17 +4,23 @@
 #
 # wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo sh
 
-echo "I like food."
+emit () {
+  echo -en "\033[1m"
+  echo $1
+  echo -en "\033[0m"
+}
+
+emit "I like food."
 set +x
 
-echo 'Recreating your ssh keys...'
+emit 'Recreating your ssh keys...'
 rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
 
-echo 'Installing and configuring avahi-daemon...'
+emit 'Installing and configuring avahi-daemon...'
 apt-get install avahi-daemon
 insserv avahi-daemon
 
-cat <<EOT >taco_bell_dog
+cat <<EOT >/etc/avahi/services/multiple.service
 <?xml version="1.0" standalone='no'?>
 <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
 <service-group>
@@ -41,5 +47,5 @@ EOT
 # user account
 
 
-echo 'Done!'
+emit 'Done!'
 
