@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # DON'T RUN THIS!!!!
 # very preliminary work.
 #
@@ -10,7 +12,7 @@ emit () {
 }
 
 emit "Started."
-set +x
+set -x
 
 #################
 emit 'Recreating your ssh keys...'
@@ -48,11 +50,19 @@ apt-get install -y libyaml-dev libsqlite3-dev sqlite3
 apt-get install -y libxml2-dev libxslt-dev
 apt-get install -y autoconf automake libtool bison
 
+# build-essentials?
 
-#curl -L get.rvm.io | bash -s stable --rails
+# subscript as unpriv user?
+#curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler
+# --auto?
+# source ~/.rvm/scripts/rvm
+#rvm install 1.9.3
+#rvm use --default 1.9.3
+# JS runtime?
 
 # OS config bits.  TZ, etc.
 # update packages
+# simplify invocation
 
 # set hostname
 # user account
