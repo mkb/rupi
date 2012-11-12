@@ -2,12 +2,11 @@
 # very preliminary work.
 #
 #
-# wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo sh
+# wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo bash
 
 emit () {
-  echo -en "\033[1m"
-  echo $1
-  echo -en "\033[0m"
+  echo -en '\e[41;34m'"RuPi:\033[0m"
+  echo -e "\033[1m $1\033[0m"
 }
 
 emit "I like food."
