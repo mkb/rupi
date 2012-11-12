@@ -9,12 +9,15 @@ emit () {
   echo -e "\033[1m $1\033[0m"
 }
 
-emit "I like food."
+emit "Started."
 set +x
 
+#################
 emit 'Recreating your ssh keys...'
 rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
 
+
+############
 emit 'Installing and configuring avahi-daemon...'
 apt-get install avahi-daemon
 insserv avahi-daemon
@@ -38,12 +41,23 @@ EOT
 
 /etc/init.d/avahi-daemon restart
 
+emit "Installing Ruby prerequisites"
+apt-get install -y git curl zlib1g-dev subversion
+apt-get install -y openssl libreadline6-dev git-core zlib1g libssl-dev
+apt-get install -y libyaml-dev libsqlite3-dev sqlite3
+apt-get install -y libxml2-dev libxslt-dev
+apt-get install -y autoconf automake libtool bison
+
+
+#curl -L get.rvm.io | bash -s stable --rails
 
 # OS config bits.  TZ, etc.
 # update packages
 
 # set hostname
 # user account
+# set pw
+# grow partition
 
 
 emit 'Done!'
