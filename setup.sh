@@ -21,7 +21,7 @@ rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
 
 ############
 emit 'Installing and configuring avahi-daemon...'
-apt-get install avahi-daemon
+apt-get install -y avahi-daemon
 insserv avahi-daemon
 
 cat <<EOT >/etc/avahi/services/multiple.service
