@@ -1,6 +1,8 @@
 
 require 'tmpdir'
 
+# make sure we're on master and git cache isn't dirty
+
 task :release do
   Dir.mktmpdir do |dir|
     temp_location = "#{dir}/setup"

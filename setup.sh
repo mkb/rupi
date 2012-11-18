@@ -96,8 +96,6 @@ su - pi -c 'curl -L get.rvm.io | bash -s stable --rails --without-gems="rvm ruby
 emit "Installing Ruby 1.9.3"
 su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 
-
-
 # which JS runtime?
 
 # OS config bits.  TZ, etc.
@@ -107,6 +105,8 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # user account
 # set pw
 # grow partition
+
+# output a pointer to learn more somewhere...
 
 emit 'Done!'
 
