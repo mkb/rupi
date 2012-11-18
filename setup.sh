@@ -73,6 +73,8 @@ apt-get install -y libxml2-dev libxslt-dev
 apt-get install -y autoconf automake libtool bison
 
 
+# build-essential libc6-dev ncurses-dev pkg-config
+
 emit "Installing Ruby Version Manager (rvm)..."
 su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
 su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
@@ -84,7 +86,8 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # source ~/.rvm/scripts/rvm
 
 # --auto?
-# JS runtime?
+# --rails?
+# which JS runtime?
 
 # OS config bits.  TZ, etc.
 # simplify invocation
