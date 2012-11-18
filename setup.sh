@@ -16,30 +16,33 @@ emit () {
 emit "Started."
 
 #################
-emit 'Recreating your ssh keys...'
+emit 'Checking your ssh host keys...'
 set +x
-read -p "Do you want to recreate your ssh host keys? " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]
+if [[ `ssh-keygen -l -f /etc/ssh/ssh_host_key.pub` =~ 1:2:3:4:5 ]]
 then
-  sleep 2
-  echo -n -e "\007\007"
-  read -p "Are you sure? " -n 1 -r
+  emit 'Looks like you have the default keys which is not good.'
+  set +x
+  read -p "Do you want to recreate your ssh host keys? " -n 1 -r
   echo
   if [[ $REPLY =~ ^[Yy]$ ]]
   then
-    set -x
-    rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+    sleep 2
+    echo -n -e "\007\007"
+    read -p "Are you sure? " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]
+    then
+      set -x
+      rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+    fi
   fi
 fi
-
 
 #############
 emit 'Updating your ports...'
 set -x
 apt-get update -y
 apt-get upgrade -y
-
 
 ############
 emit 'Installing and configuring avahi-daemon...'
@@ -65,6 +68,7 @@ EOT
 
 /etc/init.d/avahi-daemon restart
 
+#############
 emit "Installing Ruby prerequisites..."
 apt-get install -y git curl zlib1g-dev subversion
 apt-get install -y openssl libreadline6-dev git-core zlib1g libssl-dev
@@ -72,21 +76,25 @@ apt-get install -y libyaml-dev libsqlite3-dev sqlite3
 apt-get install -y libxml2-dev libxslt-dev
 apt-get install -y autoconf automake libtool bison
 
-
 # build-essential libc6-dev ncurses-dev pkg-config
 
+################
 emit "Installing Ruby Version Manager (rvm)..."
-su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
-su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
-
+su - pi -c 'curl -L get.rvm.io | bash -s stable --rails --without-gems="rvm rubygems-bundler"'
 
 # if [ -f ~pi/.bashrc ]; then
 #   cat >> ~pi/.bashrc
 # fi
 # source ~/.rvm/scripts/rvm
-
 # --auto?
 # --rails?
+
+################
+emit "Installing Ruby 1.9.3"
+su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
+
+
+
 # which JS runtime?
 
 # OS config bits.  TZ, etc.
