@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # DON'T RUN THIS!!!!
-# very preliminary work.
+# very preliminary work.  it will break your shit.
 #
 #
 # wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo bash
 
 emit () {
   set +x
-  echo -en '\e[41;34m'"RuPi:\033[0m"
+  echo -en '\e[41;37m'"RuPi:\033[0m"
   echo -e "\033[1m $1\033[0m"
   set -x
 }
