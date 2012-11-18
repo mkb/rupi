@@ -65,32 +65,34 @@ EOT
 
 /etc/init.d/avahi-daemon restart
 
-emit "Installing Ruby prerequisites"
+emit "Installing Ruby prerequisites..."
 apt-get install -y git curl zlib1g-dev subversion
 apt-get install -y openssl libreadline6-dev git-core zlib1g libssl-dev
 apt-get install -y libyaml-dev libsqlite3-dev sqlite3
 apt-get install -y libxml2-dev libxslt-dev
 apt-get install -y autoconf automake libtool bison
 
-# build-essentials?
 
-# subscript as unpriv user?
-#curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler
-# --auto?
+emit "Installing Ruby Version Manager (rvm)..."
+su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
+su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
+
+
+# if [ -f ~pi/.bashrc ]; then
+#   cat >> ~pi/.bashrc
+# fi
 # source ~/.rvm/scripts/rvm
-#rvm install 1.9.3
-#rvm use --default 1.9.3
+
+# --auto?
 # JS runtime?
 
 # OS config bits.  TZ, etc.
-# update packages
 # simplify invocation
 
 # set hostname
 # user account
 # set pw
 # grow partition
-
 
 emit 'Done!'
 
