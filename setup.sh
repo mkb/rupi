@@ -7,16 +7,38 @@
 # wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo bash
 
 emit () {
+  set +x
   echo -en '\e[41;34m'"RuPi:\033[0m"
   echo -e "\033[1m $1\033[0m"
+  set -x
 }
 
 emit "Started."
-set -x
 
 #################
 emit 'Recreating your ssh keys...'
-rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+set +x
+read -p "Do you want to recreate your ssh host keys? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  sleep 2
+  echo -n -e "\007\007"
+  read -p "Are you sure? " -n 1 -r
+  echo
+  if [[ $REPLY =~ ^[Yy]$ ]]
+  then
+    set -x
+    rm /etc/ssh/ssh_host_* && dpkg-reconfigure openssh-server
+  fi
+fi
+
+
+#############
+emit 'Updating your ports...'
+set -x
+apt-get update -y
+apt-get upgrade -y
 
 
 ############
