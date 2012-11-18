@@ -6,6 +6,8 @@
 #
 # wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo bash
 
+set -e
+
 emit () {
   set +x
   echo -en '\e[41;37m'"RuPi:\033[0m"
@@ -18,7 +20,8 @@ emit "Started."
 #################
 emit 'Checking your ssh host keys...'
 set +x
-if [[ `ssh-keygen -l -f /etc/ssh/ssh_host_key.pub` =~ 1:2:3:4:5 ]]
+fingerprint=$(ssh-keygen -l -f /etc/ssh/ssh_host_dsa_key.pub)
+if [[ $fingerprint =~ 1:2:3:4:5 ]]
 then
   emit 'Looks like you have the default keys which is not good.'
   set +x
