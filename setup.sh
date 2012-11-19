@@ -89,6 +89,7 @@ su - pi -c 'curl -L get.rvm.io | bash -s stable --rails --without-gems="rvm ruby
 #   cat >> ~pi/.bashrc
 # fi
 # source ~/.rvm/scripts/rvm
+# [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 # --auto?
 # --rails?
 
@@ -101,7 +102,7 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # OS config bits.  TZ, etc.
 # simplify invocation
 
-# set hostname
+# set hostname (rm -f ~/.zcompdump)
 # user account
 # set pw
 # grow partition
