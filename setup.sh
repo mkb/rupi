@@ -6,8 +6,6 @@
 #
 # wget -O - -q https://raw.github.com/mkb/rupi/master/setup.sh | sudo bash
 
-set -e
-
 emit () {
   set +x
   echo -en '\e[41;37m'"RuPi:\033[0m"
@@ -17,11 +15,13 @@ emit () {
 
 emit "Started."
 
+
 #############
 emit 'Updating your ports...'
 set -x
 apt-get update -y
 apt-get upgrade -y
+
 
 ############
 emit 'Installing and configuring avahi-daemon...'
@@ -47,7 +47,6 @@ EOT
 
 /etc/init.d/avahi-daemon restart
 
-#############
 emit "Installing Ruby prerequisites..."
 apt-get install -y git curl zlib1g-dev subversion
 apt-get install -y openssl libreadline6-dev git-core zlib1g libssl-dev
@@ -55,11 +54,12 @@ apt-get install -y libyaml-dev libsqlite3-dev sqlite3
 apt-get install -y libxml2-dev libxslt-dev
 apt-get install -y autoconf automake libtool bison
 
+
 # build-essential libc6-dev ncurses-dev pkg-config
 
-################
 emit "Installing Ruby Version Manager (rvm)..."
-su - pi -c 'curl -L get.rvm.io | bash -s stable --rails --without-gems="rvm rubygems-bundler"'
+su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
+
 
 # if [ -f ~pi/.bashrc ]; then
 #   cat >> ~pi/.bashrc
