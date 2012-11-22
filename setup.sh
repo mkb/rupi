@@ -76,7 +76,6 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # which JS runtime?
 
 # OS config bits.  TZ, etc.
-# simplify invocation
 
 # set hostname (rm -f ~/.zcompdump)
 # user account
