@@ -112,6 +112,10 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # --rails?
 
 # which JS runtime?
+################
+emit "Installing Ruby 1.9.3"
+su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
+
 
 # OS config bits.  TZ, etc.
 
@@ -121,7 +125,5 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # grow partition
 
 # output a pointer to learn more somewhere...
-
-# check for existing avahi
 
 emit 'Done!'

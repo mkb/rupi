@@ -1,5 +1,12 @@
 #!/bin/bash
 
+
+# start with warning banner and/or question
+# check for existing avahi install or config
+# install node for its JS runtime
+# split into subscripts
+
+
 # if [ -f ~pi/.bashrc ]; then
 #   cat >> ~pi/.bashrc
 # fi
