@@ -1,11 +1,11 @@
 #!/bin/bash
 
-
+# TODO
+# ----
 # start with warning banner and/or question
 # check for existing avahi install or config
 # install node for its JS runtime
 # split into subscripts
-
 
 # if [ -f ~pi/.bashrc ]; then
 #   cat >> ~pi/.bashrc
@@ -25,7 +25,5 @@
 # grow partition
 
 # output a pointer to learn more somewhere...
-
-# check for existing avahi
 
 emit 'Done!'
