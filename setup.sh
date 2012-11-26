@@ -5,7 +5,6 @@
 ############
 
 
-
 emit () {
   set +x
   echo -en '\e[41;37m'"RuPi:\033[0m"
@@ -87,7 +86,7 @@ apt-get install -y autoconf automake libtool bison
 # 40_rvm.sh
 
 emit "Installing Ruby Version Manager (rvm)..."
-su - pi -c 'curl -L get.rvm.io | bash -s stable --rails --without-gems="rvm rubygems-bundler"'
+su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
 
 
 #######
@@ -99,10 +98,25 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 
 
 #######
+# 60_rails.sh
+
+emit "Installing Rails"
+su - pi -c 'gem install rails'
+
+
+#######
+# 70_nodejs.sh
+
+emit "Installing Node.js..."
+sudo apt-get install -y nodejs npm
+
+
+#######
 # 99_done.sh
 
 # TODO
 # ----
+# validate that we are running as pi user
 # start with warning banner and/or question
 # check for existing avahi install or config
 # install node for its JS runtime
@@ -113,13 +127,8 @@ su - pi -c 'command rvm install 1.9.3 ; rvm use --default 1.9.3'
 # fi
 # source ~/.rvm/scripts/rvm
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-# --auto?
-# --rails?
-
-# which JS runtime?
 
 # OS config bits.  TZ, etc.
-
 # set hostname (rm -f ~/.zcompdump)
 # user account
 # set pw

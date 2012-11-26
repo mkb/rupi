@@ -2,6 +2,7 @@
 
 # TODO
 # ----
+# validate that we are running as pi user
 # start with warning banner and/or question
 # check for existing avahi install or config
 # install node for its JS runtime
@@ -12,13 +13,8 @@
 # fi
 # source ~/.rvm/scripts/rvm
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-# --auto?
-# --rails?
-
-# which JS runtime?
 
 # OS config bits.  TZ, etc.
-
 # set hostname (rm -f ~/.zcompdump)
 # user account
 # set pw
