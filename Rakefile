@@ -3,6 +3,7 @@ require 'tmpdir'
 # TODO:
 # make sure we're on master and git cache isn't dirty
 
+desc "Not the right thing."
 task :release do
   Dir.mktmpdir do |dir|
     temp_location = "#{dir}/setup"
@@ -34,6 +35,7 @@ def append_segment(targetfile, filename)
   targetfile.write("\n\n")
 end
 
+desc "Assemble full setup script out of constituent parts."
 task :build do
   File.open('setup.sh', 'w') do |setup|
     setup.write(HEADER)
