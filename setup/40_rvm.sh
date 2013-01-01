@@ -2,4 +2,4 @@
 
 emit "Installing Ruby Version Manager (rvm)..."
 su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
-. $HOME/.rvm/scripts/rvm
+. ~pi/.rvm/scripts/rvm
