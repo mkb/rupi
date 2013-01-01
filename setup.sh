@@ -87,6 +87,7 @@ apt-get install -y autoconf automake libtool bison
 
 emit "Installing Ruby Version Manager (rvm)..."
 su - pi -c 'curl -L get.rvm.io | bash -s stable --without-gems="rvm rubygems-bundler"'
+. $HOME/.rvm/scripts/rvm
 
 
 #######
@@ -137,3 +138,5 @@ sudo apt-get install -y nodejs npm
 # output a pointer to learn more somewhere...
 
 emit 'Done!'
+
+
